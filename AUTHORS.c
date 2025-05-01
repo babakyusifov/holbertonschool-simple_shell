@@ -9,6 +9,6 @@ C - Simple Shell
 
 * Elshad Yusifov /e.yusifov335@gmail.com - developer - Baku (Azerbaijan)
 * Babak Yusifov /babek@div.edu.az  - developer - Baku (Azerbaijan)
-
+* Tamerlan Huseynguliyev  
 
 ## Special thanks to Islam Guliyev
