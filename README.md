@@ -120,4 +120,4 @@ root@id:/holbertonschool-simple_shell#
 This README file, along with the entirety of this project, was made by :
 - **[Elshad Yusifov](https://github.com/elshadyusifov)**
 - **[Babak Yusifov](https://github.com/babakyusifov)**
-- **[Tamerlan Huseynguliyev]()**
+- **[Tamerlan Huseynguliyev](https://github.com/tamerlanhtm)**
