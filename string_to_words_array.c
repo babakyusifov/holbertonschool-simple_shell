@@ -10,7 +10,10 @@ char **string_to_words_array(char *line, int *status)
 
 	line_copy = strdup(line); 
 	if (line_copy == NULL)
+	{
+		*status = 1;
 		return (NULL);
+	}
 
 	arg = strtok(line_copy, " \n");
 	while (arg) 
@@ -18,10 +21,10 @@ char **string_to_words_array(char *line, int *status)
 		argc++;
 		arg = strtok(NULL, " \n");
 	}
-	free(line_copy);
 
 	if (argc == 0)
 	{
+		free(line_copy);
 		argv = malloc(sizeof(char *) * (argc + 2)); 
 		argv[0] = NULL; 
 		return (argv); 
@@ -29,7 +32,11 @@ char **string_to_words_array(char *line, int *status)
 
 	argv = malloc(sizeof(char *) * (argc + 1));
 	if (argv == NULL)
+	{
+		free(line_copy);
+		*status = 1;
 		return (NULL);
+	}
 
 	arg = strtok(line, " \n");
 	for (i = 0; i < argc; i++) 
@@ -39,6 +46,7 @@ char **string_to_words_array(char *line, int *status)
 	}
 	
 	argv[i] = NULL; 
+	free(line_copy);
 	(void)status;
 	return (argv); 
 }
