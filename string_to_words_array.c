@@ -25,8 +25,13 @@ char **string_to_words_array(char *line, int *status)
 	if (argc == 0)
 	{
 		free(line_copy);
-		argv = malloc(sizeof(char *) * (argc + 2)); 
-		argv[0] = NULL; 
+		argv = malloc(sizeof(char *) * 1); 
+		if (argv == NULL)
+		{
+			*status = 1;
+			return (NULL);
+		}
+		argv[0] = NULL;
 		return (argv); 
 	}
 
