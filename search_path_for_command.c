@@ -61,6 +61,7 @@ char *search_path_for_command(char *command, int *status)
 		}
 
 		free(full_path);
+		full_path = NULL;
 		dir = strtok(NULL, ":");
 	}
 
