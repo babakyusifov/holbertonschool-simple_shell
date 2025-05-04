@@ -11,11 +11,11 @@ char *search_path_for_command(char *command, int *status)
 	char *dir = NULL;
 	char *full_path = NULL;
 
-	if (command == NULL || strlen(command) < 0)
+	if (command == NULL || *command == '\0')
 		return (NULL);
 
 	if (access(command, F_OK) == 0 &&
-		(command[0] == '/' || command[1] == '/' || command[3] == '/'))
+		(command[0] == '/' || strncmp(command, "./", 2) == 0))
 	{
 		full_path = strdup(command);
 		return (full_path);
@@ -34,18 +34,18 @@ char *search_path_for_command(char *command, int *status)
 
 	while (dir)
 	{
-		full_path = malloc(strlen(dir) + strlen(command) + 1);
+		full_path = malloc(strlen(dir) + strlen(command) + 2);
 		strcpy(full_path, dir);
 		strcat(full_path, "/");
 		strcat(full_path, command);
 
-		if (access(full_path, X_OK) == 1)
+		if (access(full_path, X_OK) == 0)
 		{
-			free(path);
 			free(path_copy);
-			break;
+			return (full_path);
 		}
 
+		free(full_path);
 		dir = strtok(NULL, ":");
 	}
 
@@ -53,7 +53,6 @@ char *search_path_for_command(char *command, int *status)
 	*status = 0;
 	free(path);
 	free(path_copy);
-	free(full_path);
 	return (NULL);
 }
 
