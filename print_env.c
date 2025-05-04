@@ -1,11 +1,12 @@
 #include "main.h"
 #include <stdio.h>
+#include <unistd.h>
 
 extern char **environ;
 
 void print_env(void)
 {
-	int i = 0;
+	size_t i = 0;
 
 	while (environ[i] != NULL)
 	{
